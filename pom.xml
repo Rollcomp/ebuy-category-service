@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.ebuy</groupId>
-	<artifactId>category-service</artifactId>
+	<artifactId>ebuy-category-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ebuy-category-service</name>
 	<description>Category Service for Ebuy</description>
