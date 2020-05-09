@@ -36,25 +36,25 @@ public class CategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getCategories() {
+    public ResponseEntity<List<Category>> getCategories() {
         List<Category> categoryList = categoryService.findAllCategories();
         return ResponseEntity.ok(categoryMapper.toCategoryDtoList(categoryList));
     }
 
     @GetMapping("/{categoryId}")
-    public ResponseEntity<?> getCategory(@PathVariable long categoryId) {
+    public ResponseEntity<Category> getCategory(@PathVariable long categoryId) {
         Category category = categoryService.findCategory(categoryId);
         return ResponseEntity.ok(categoryMapper.toCategoryDto(category));
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> createCategory(@RequestBody CategoryRequest request) {
+    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequest request) {
         Category savedCategory = categoryService.createCategory(categoryMapper.toCategory(request), request.getParentCategory());
         return ResponseEntity.ok(categoryMapper.toCategoryDto(savedCategory));
     }
 
     @PutMapping("/{categoryId}")
-    public ResponseEntity<?> updateCategory(@PathVariable long categoryId, @RequestBody CategoryRequest request) {
+    public ResponseEntity<Category> updateCategory(@PathVariable long categoryId, @RequestBody CategoryRequest request) {
         Category updatedCategory = categoryMapper.toCategory(request);
         Category result = categoryService.updateCategory(categoryId, updatedCategory, request.getParentCategory());
         return ResponseEntity.ok(result);
